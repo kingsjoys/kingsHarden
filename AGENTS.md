@@ -1,8 +1,8 @@
-# kingsSafe: contributor agent instructions
+# kingsHarden: contributor agent instructions
 
 ## Project and contract
 
-kingsSafe is Apache-2.0 Unity game-hardening research with three equal core areas: asset protection, memory protection, and logic obfuscation. It is not a production SDK. Read `README.md`, `docs/requirements.md`, `docs/architecture.md`, and `docs/build-hardening-feasibility.md` before changing a protection mechanism.
+kingsHarden is Apache-2.0 Unity game-hardening research with three equal core areas: asset protection, memory protection, and logic obfuscation. It is not a production SDK. Read `README.md`, `docs/requirements.md`, `docs/architecture.md`, and `docs/build-hardening-feasibility.md` before changing a protection mechanism.
 
 The product integration target is: import the plugin, keep the original Build entry, and change no business source, field types, loading calls, scenes, resource organization, save formats, or network protocols. Transform build copies and output, never original assets or shared compilation caches. Performance is measured separately; no zero-cost claim.
 

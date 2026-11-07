@@ -1,8 +1,10 @@
-# kingsSafe
+# kingsHarden
 
-[官网](https://safe.kingsjoys.com/) · [研究文档](docs/architecture.md) · [Issues](https://github.com/kingsjoys/kingsSafe/issues) · [参与贡献](CONTRIBUTING.md) · [Apache-2.0](LICENSE)
+项目原名 kingsSafe，于 2026 年 11 月 7 日更名为 kingsHarden。
 
-kingsSafe 面向 Unity 游戏，以三个并列核心功能建设开源安全加固与验证体系：资产加固、内存保护、逻辑混淆，分别对应守护创作、捍卫公平、保护创新。交付先从资产加固开始，再开展关键数据内存保护；开发顺序不代表功能的重要性等级。
+[官网](https://harden.kingsjoys.com/) · [研究文档](docs/architecture.md) · [Issues](https://github.com/kingsjoys/kingsHarden/issues) · [参与贡献](CONTRIBUTING.md) · [Apache-2.0](LICENSE)
+
+kingsHarden 面向 Unity 游戏，以三个并列核心功能建设开源安全加固与验证体系：资产加固、内存保护、逻辑混淆，分别对应守护创作、捍卫公平、保护创新。交付先从资产加固开始，再开展关键数据内存保护；开发顺序不代表功能的重要性等级。
 
 项目以公开研究、独立验证和可复现回归持续改进安全性。REA 类逆向工具作为技术评测手段之一，不作为品牌定位或联合产品关系。
 
@@ -13,8 +15,8 @@ kingsSafe 面向 Unity 游戏，以三个并列核心功能建设开源安全加
 本仓库包含设计、隔离实验和官网，尚无可安装的产品 SDK。
 
 ```sh
-git clone https://github.com/kingsjoys/kingsSafe.git
-cd kingsSafe
+git clone https://github.com/kingsjoys/kingsHarden.git
+cd kingsHarden
 npm --prefix www run build
 npm --prefix www run check
 npm --prefix www run dev
@@ -31,7 +33,7 @@ npm --prefix www run dev
 
 ## 设计原则
 
-接入硬目标为只引入 kingsSafe 插件，沿用原 Build，不要求团队修改业务源码、字段类型、场景、资源组织或构建脚本。插件自动处理构建副本并报告覆盖范围；当前方案仍需验证自动接入，不将手工改造样本计为产品完成。
+接入硬目标为只引入 kingsHarden 插件，沿用原 Build，不要求团队修改业务源码、字段类型、场景、资源组织或构建脚本。插件自动处理构建副本并报告覆盖范围；当前方案仍需验证自动接入，不将手工改造样本计为产品完成。
 
 - 玩家运行透明，无新增启动器、管理员权限或额外操作；允许必要的资源解密与数据保护组件。
 - 功能和资源无损，保持资源质量、业务行为、存档和对外协议。

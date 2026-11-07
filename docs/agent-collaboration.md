@@ -1,6 +1,6 @@
 # Agent 贡献与维护者审核
 
-kingsSafe 欢迎 AI Agent、人类开发者及两者共同完成的贡献。协作入口统一为 GitHub Issue 与 PR，社区帖子用于发现项目和讨论，不代替源码审查或验收。
+kingsHarden 欢迎 AI Agent、人类开发者及两者共同完成的贡献。协作入口统一为 GitHub Issue 与 PR，社区帖子用于发现项目和讨论，不代替源码审查或验收。
 
 ## 可以贡献什么
 
@@ -8,7 +8,7 @@ kingsSafe 欢迎 AI Agent、人类开发者及两者共同完成的贡献。协�
 
 首次贡献宜选择小范围任务：独立复现现有探针、补充字段编译用法矩阵、明确一条资源加载路径的契约、提出一个可验证的绕过或修复。完整产品设计任务不能用一份未运行的生成代码直接关闭。
 
-入口规则见 [AGENTS.md](../AGENTS.md)。现有任务见 [Issues](https://github.com/kingsjoys/kingsSafe/issues)，跨阶段设计见[路线图](roadmap.md)。
+入口规则见 [AGENTS.md](../AGENTS.md)。现有任务见 [Issues](https://github.com/kingsjoys/kingsHarden/issues)，跨阶段设计见[路线图](roadmap.md)。
 
 ## 一次贡献的流程
 
@@ -22,7 +22,7 @@ kingsSafe 欢迎 AI Agent、人类开发者及两者共同完成的贡献。协�
 
 ## 审核与合并标准
 
-用户已授权维护者助手承担 kingsSafe 的代码审核与合并。AI 审核用于辅助维护，实际合并仍受项目契约与以下证据约束。
+用户已授权维护者助手承担 kingsHarden 的代码审核与合并。AI 审核用于辅助维护，实际合并仍受项目契约与以下证据约束。
 
 | 变更 | 合并前证据 |
 | --- | --- |

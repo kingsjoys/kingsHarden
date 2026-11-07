@@ -1,4 +1,4 @@
-# kingsSafe 第一版计划
+# kingsHarden 第一版计划
 
 v0.1 先交付资源保护的完整链条，v0.2 再交付关键数据内存保护。实现前先确定目标、威胁模型、候选技术和评测标准；以下为产品任务，尚未通过验收。2026 年 10 月 30 日的[隔离构建机制探针](build-hardening-feasibility.md)不等于首版实现。
 
@@ -63,8 +63,8 @@ v0.1 首先支持明确清单内的本地 AssetBundle。Addressables provider �
 
 ## 实施时的建议结构
 
-- packages/com.kingsjoys.kingssafe：Editor 构建接入与必要 Runtime，程序集分离。
-- src/KingsSafe.Core 与 src/KingsSafe.Cli：资源格式、构建保护与工具入口。
+- packages/com.kingsjoys.kingsharden：Editor 构建接入与必要 Runtime，程序集分离。
+- src/KingsHarden.Core 与 src/KingsHarden.Cli：资源格式、构建保护与工具入口。
 - samples/UnityClient：固定版本研究样本及资源。
 - benchmarks：任务定义、验证器、性能与攻防适配。
 - tests：格式、认证、引用与生命周期回归。

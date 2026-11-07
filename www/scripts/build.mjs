@@ -20,4 +20,4 @@ for (const entry of await readdir(path.join(source, 'content'))) {
 }
 await rm(path.join(root, 'dist'), {recursive:true, force:true});
 await cp(source, path.join(root, 'dist'), {recursive:true});
-console.log('Built kingsSafe website to dist/. Project documentation synchronized.');
+console.log('Built kingsHarden website to dist/. Project documentation synchronized.');
