@@ -9,14 +9,14 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.Compilation;
 using UnityEngine;
-using KingsSafe.Probe;
+using KingsHarden.Probe;
 public sealed class ProbeBuild : IPostBuildPlayerScriptDLLs, IPostprocessBuildWithReport
 {
     public int callbackOrder { get { return 100; } }
     public void OnPostBuildPlayerScriptDLLs(BuildReport report)
     {
         var own = CompilationPipeline.GetAssemblies(AssembliesType.Player)
-            .Where(a => a.sourceFiles.Any(p => p.StartsWith("Assets/", StringComparison.Ordinal) && !p.StartsWith("Assets/KingsSafeProbe/", StringComparison.Ordinal)))
+            .Where(a => a.sourceFiles.Any(p => p.StartsWith("Assets/", StringComparison.Ordinal) && !p.StartsWith("Assets/KingsHardenProbe/", StringComparison.Ordinal)))
             .Select(a=>a.name+".dll").ToArray();
         var files = report.GetFiles().Select(f => f.path).Where(p => own.Contains(Path.GetFileName(p))).Distinct().ToArray();
         if (files.Length == 0) throw new BuildFailedException("PROBE: no staged own assemblies found");
@@ -33,7 +33,7 @@ public sealed class ProbeBuild : IPostBuildPlayerScriptDLLs, IPostprocessBuildWi
         resolver.AddSearchDirectory(Path.GetFullPath("Library/ScriptAssemblies"));
         using (var module = ModuleDefinition.ReadModule(full, new ReaderParameters { AssemblyResolver=resolver, InMemory=true }))
         {
-            if (module.Types.Any(t=>t.Name=="__KingsSafeProbeApplied")) throw new BuildFailedException("PROBE: already transformed staging input");
+            if (module.Types.Any(t=>t.Name=="__KingsHardenProbeApplied")) throw new BuildFailedException("PROBE: already transformed staging input");
             Debug.Log("PROBE_STAGING path="+full);
             foreach(var t in module.Types) Debug.Log("PROBE_TYPE name="+t.FullName+" base="+t.BaseType+" serializable="+t.IsSerializable+" fields="+String.Join(",",t.Fields.Select(f=>f.Name+":"+f.FieldType.FullName+":"+f.FieldType.MetadataType)));
             var methods = module.Types.SelectMany(t=>t.Methods).Where(m=>m.HasBody).ToArray();
@@ -96,7 +96,7 @@ public sealed class ProbeBuild : IPostBuildPlayerScriptDLLs, IPostprocessBuildWi
             foreach(var type in module.Types.Where(t=>t.BaseType!=null && t.BaseType.FullName=="System.Object"))
                 foreach(var method in type.Methods.Where(m=>m.IsPrivate && !m.IsConstructor && !m.IsSpecialName && !m.Name.StartsWith("__ks_")))
                 { method.Name="_ks_method_"+(renamed++); }
-            module.Types.Add(new TypeDefinition("", "__KingsSafeProbeApplied",TypeAttributes.NotPublic|TypeAttributes.Class,module.TypeSystem.Object));
+            module.Types.Add(new TypeDefinition("", "__KingsHardenProbeApplied",TypeAttributes.NotPublic|TypeAttributes.Class,module.TypeSystem.Object));
             module.Write(full);
             Debug.Log("PROBE_TRANSFORM assembly="+Path.GetFileName(path)+" fields="+fields.Length+" accesses="+rewritten+" resourceCalls="+redirects+" privateMethods="+renamed);
         }

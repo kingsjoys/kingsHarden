@@ -1,6 +1,6 @@
 namespace SampleGame
 {
-    // Ordinary business code: no kingsSafe attributes, types or API calls.
+    // Ordinary business code: no kingsHarden attributes, types or API calls.
     public sealed class GameState
     {
         public int Ammo;

@@ -2,13 +2,13 @@
   "scope": "Unity 6000.3.6f1 / macOS arm64 host and run / universal Mono Player / own tiny fixture / headless",
   "classification": "mechanism probe; not a security acceptance report",
   "same_business_and_build_script_sha256": {
-    "Assets/Game/GameState.cs": "01a33f32ad00ad3cc46fdcbaeac089c641dbf4122c12a240e379f1166f9bf676",
-    "Assets/Game/GameRunner.cs": "84d6e31177e0b63c6aad1dd6d5b6675055ac68120dab9c2e96ec02f70deea194",
-    "Assets/Editor/FixtureBuild.cs": "8c8cad108aec0d8b4407446d5f498cd6e6fd0c2cdb1b8c7448723500593ff99b",
-    "Assets/StreamingAssets/fixture.bundle": "c0af7e0a9896fe98942731991aaf5f8a58a8534a550f481742f722ca4bfe6381"
+    "Assets/Game/GameState.cs": "0206628f35638f1db2c0915078edec19f81cbed8ab59516438abe7f7edf45bdf",
+    "Assets/Game/GameRunner.cs": "0434ba5d430234ba0b4cf346d5d96bd16a53b10eb32a98c3e807f46e49fa658e",
+    "Assets/Editor/FixtureBuild.cs": "10128bcbdddd6a365544bf4141e96ba1202465659e5ebcfe8e9a9f4e12718c5e",
+    "Assets/StreamingAssets/fixture.bundle": "4058189421b6cd26b7a9a35d6117e50e3bbc554effc417866f00b7693138ab18"
   },
-  "same_fixture_bundle_sha256": "c0af7e0a9896fe98942731991aaf5f8a58a8534a550f481742f722ca4bfe6381",
-  "same_runtime_result": "PROBE_SEMANTICS_PASS score=298 ammo=97 asset=kingsSafe fixture: asset bytes unchanged",
+  "same_fixture_bundle_sha256": "4058189421b6cd26b7a9a35d6117e50e3bbc554effc417866f00b7693138ab18",
+  "same_runtime_result": "PROBE_SEMANTICS_PASS score=298 ammo=97 asset=kingsHarden fixture: asset bytes unchanged",
   "automatic_transform": "one field / seven accesses / one resource call / private name transformation",
   "single_storage_write_rejected_on_next_business_read": true,
   "corrupted_ciphertext_rejected": true,

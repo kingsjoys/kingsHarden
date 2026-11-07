@@ -19,7 +19,7 @@ public static class FixtureBuild
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         new GameObject("Game").AddComponent<GameRunner>();
         Directory.CreateDirectory("Assets/Fixture");
-        File.WriteAllText("Assets/Fixture/message.txt", "kingsSafe fixture: asset bytes unchanged\n");
+        File.WriteAllText("Assets/Fixture/message.txt", "kingsHarden fixture: asset bytes unchanged\n");
         AssetDatabase.Refresh();
         EditorSceneManager.SaveScene(scene, "Assets/Fixture/Main.unity");
         Directory.CreateDirectory("Assets/StreamingAssets");

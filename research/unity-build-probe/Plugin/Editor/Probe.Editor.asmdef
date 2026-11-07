@@ -1,1 +1,1 @@
-{"name":"KingsSafe.Probe.Editor","references":["KingsSafe.Probe.Runtime"],"includePlatforms":["Editor"],"overrideReferences":true,"precompiledReferences":["Mono.Cecil.dll"],"autoReferenced":true}
+{"name":"KingsHarden.Probe.Editor","references":["KingsHarden.Probe.Runtime"],"includePlatforms":["Editor"],"overrideReferences":true,"precompiledReferences":["Mono.Cecil.dll"],"autoReferenced":true}

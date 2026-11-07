@@ -1,10 +1,8 @@
 # kingsHarden Unity 自动构建机制探针
 
-探针在项目原名 kingsSafe 时建立。样本、程序集标识和结果记录沿用当时的内容，便于按原哈希复现。
-
 这是自有小样本的研究代码，验证“只导入插件、沿用原 Build”能否把三条机制自动带入真实 Player。不是产品 SDK、抗外挂方案或性能测试。
 
-首轮实测于 2026-10-30：Unity 6000.3.6f1 / macOS arm64 主机 / Mac Standalone universal（x64 + arm64）Mono Player，以本机默认 arm64 执行；未验证 x64 运行。详细分析见[可行性报告](../../docs/build-hardening-feasibility.md)，机器可读摘要见[首轮结果](results-2026-10-30.json)和[新建空工程自动复现结果](results-clean-2026-10-30.json)。两轮原业务源码摘要相同；新工程生成的资产标识不同，不要求两轮 Bundle 文件摘要相同，只验证各自基线与保护构建的原输入保持。
+本次复现于 2026-11-07 完成。环境为 Unity 6000.3.6f1 / macOS arm64 主机 / Mac Standalone universal（x64 + arm64）Mono Player，以本机默认 arm64 执行；未验证 x64 运行。详细分析见[可行性报告](../../docs/build-hardening-feasibility.md)，机器可读摘要见[自动复现结果](results-2026-11-07.json)。验证程序对比同一次实验中基线和保护构建的源码及输入 Bundle 摘要。
 
 ## 文件
 
@@ -38,12 +36,6 @@ python3 research/unity-build-probe/reproduce.py --unity '/absolute/path/Unity.ap
 ```
 
 脚本只创建新的研究目录，拒绝覆盖已有目录。生成路径会在结束时输出。Unity 需要本地许可证及包管理通信，受限执行环境可能需要允许其正常系统通信。复现不会改动现有游戏工程、Unity 安装或网站。
-
-当前首次手工调试工程的证据可用以下命令重新核验：
-
-```sh
-python3 research/unity-build-probe/verify.py
-```
 
 自动从新目录复现得到的证据，使用该目录下的 Project 和 artifacts 参数核验：
 

@@ -16,7 +16,7 @@ namespace SampleGame
                 var bundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "fixture.bundle"));
                 if (bundle == null) throw new Exception("bundle missing");
                 var asset = bundle.LoadAsset<TextAsset>("message");
-                if (asset == null || asset.text != "kingsSafe fixture: asset bytes unchanged\n") throw new Exception("asset changed");
+                if (asset == null || asset.text != "kingsHarden fixture: asset bytes unchanged\n") throw new Exception("asset changed");
                 Debug.Log("PROBE_SEMANTICS_PASS score=" + score + " ammo=" + state.Ammo + " asset=" + asset.text.Trim());
                 bundle.Unload(true);
                 // Controlled test instrumentation; identical in baseline and protected builds.
