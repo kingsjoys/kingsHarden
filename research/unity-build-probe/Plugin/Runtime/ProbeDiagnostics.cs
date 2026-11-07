@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-namespace KingsSafe.Probe
+namespace KingsHarden.Probe
 {
     // Independent test instrumentation for this own-code fixture; never a shipping component.
     public static class ProbeDiagnostics

@@ -47,7 +47,7 @@ play(artifacts/'baseline.app',artifacts/'baseline-player.log')
 files=list((project/'Assets/Game').glob('*.cs'))+[project/'Assets/Editor/FixtureBuild.cs',project/'Assets/StreamingAssets/fixture.bundle']
 hashes={str(p.relative_to(project)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 (artifacts/'source-baseline.json').write_text(json.dumps(hashes,indent=2))
-plugin=project/'Assets/KingsSafeProbe'
+plugin=project/'Assets/KingsHardenProbe'
 shutil.copytree(root/'Plugin',plugin)
 shutil.copyfile(cecil,plugin/'Editor/Mono.Cecil.dll')
 shutil.copyfile(root/'Cecil.editor.meta',plugin/'Editor/Mono.Cecil.dll.meta')

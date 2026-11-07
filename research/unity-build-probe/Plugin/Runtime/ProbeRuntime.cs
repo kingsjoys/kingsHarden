@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Scripting;
-namespace KingsSafe.Probe
+namespace KingsHarden.Probe
 {
     // Mechanism experiment only: public fixture keys, not a production key-delivery design.
     [Preserve]
