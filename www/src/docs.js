@@ -89,7 +89,7 @@ async function loadDocument(name, updateHistory = false) {
     if (active) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
-  document.title = documents[name] + ' — kingsSafe';
+  document.title = documents[name] + ' — kingsHarden';
   if (updateHistory) history.pushState({doc:name}, '', 'docs.html?doc=' + name);
   try {
     const response = await fetch('content/' + name + '.md');

@@ -1,10 +1,10 @@
 # 官网部署与域名
 
-源码仓库：[kingsjoys/kingsSafe](https://github.com/kingsjoys/kingsSafe)。官网只发布 `www/dist/` 构建产物，源码、研究样本和项目内部路线图不会被复制为网站页面。
+源码仓库：[kingsjoys/kingsHarden](https://github.com/kingsjoys/kingsHarden)。官网只发布 `www/dist/` 构建产物，源码、研究样本和项目内部路线图不会被复制为网站页面。
 
 ## GitHub Pages
 
-官网使用 [safe.kingsjoys.com](https://safe.kingsjoys.com/)。原始 Pages 地址为 [kingsjoys.github.io/kingsSafe/](https://kingsjoys.github.io/kingsSafe/)，由 GitHub Pages 管理自定义域名重定向。组织名决定 `kingsjoys.github.io`，仓库名决定 `/kingsSafe/` 路径。
+官网使用 [safe.kingsjoys.com](https://safe.kingsjoys.com/)。原始 Pages 地址为 [kingsjoys.github.io/kingsHarden/](https://kingsjoys.github.io/kingsHarden/)，由 GitHub Pages 管理自定义域名重定向。组织名决定 `kingsjoys.github.io`，仓库名决定 `/kingsHarden/` 路径。
 
 仓库 Settings → Pages 的 Source 使用 GitHub Actions。`.github/workflows/pages.yml` 在主分支相关文件变化或手动触发时构建、检查并发布：
 

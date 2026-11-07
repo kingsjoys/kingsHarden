@@ -1,4 +1,4 @@
-# kingsSafe 来源索引
+# kingsHarden 来源索引
 
 初次检索与整理日期为 2026 年 10 月 29 日；10 月 30 日新增[构建加固可行性与实测](build-hardening-feasibility.md)，其中单列 Unity 回调、Addressables、现有产品接入的一手来源及隔离样本证据。官方资料用于确认公开能力和接口；研究论文用于形成可验证假设。产品验收仍以固定版本、授权样本上的实验为准。
 
@@ -29,7 +29,7 @@
 | U06 | [Unity 6.3 序列化规则](https://docs.unity.com/en-us/engine/6000.3/manual/programming-environment/code-reload-serialization/script-serialization/rules) | 字段、托管引用和资源序列化约束；M0 对固定补丁和相关包复核 |
 | U07 | [Unity 6.3 IL2CPP 限制](https://docs.unity.com/en-us/engine/6000.3/manual/programming-environment/scripting-backends/il2cpp/scripting-restrictions) | 反射、AOT、序列化等限制 |
 
-旧的 `IPreprocessBuildWithReport` 和 `IPostprocessBuildWithReport` 官方页面指向 WithContext 接口。适配层以选定版本实测结果为准，不同时注册新旧入口造成重复处理。官方文档是接入候选依据，不代表已完成 kingsSafe 构建验证。
+旧的 `IPreprocessBuildWithReport` 和 `IPostprocessBuildWithReport` 官方页面指向 WithContext 接口。适配层以选定版本实测结果为准，不同时注册新旧入口造成重复处理。官方文档是接入候选依据，不代表已完成 kingsHarden 构建验证。
 
 ## 资源加载与密码接口
 

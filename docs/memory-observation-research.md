@@ -1,4 +1,4 @@
-# kingsSafe 内存窥探检测与响应专项调研
+# kingsHarden 内存窥探检测与响应专项调研
 
 调研日期：2026 年 10 月 29 日；关联实测更新：10 月 30 日。状态：内存窥探、自终止及双进程实验仍未实施，保护效果、兼容性和性能验收均为 not-run。另有[Mac Mono 字段自动改写机制探针](build-hardening-feasibility.md)，仅验证受控字段写入及协调修改/完整旧状态回放反例，不表示本专项的外部读取检测已完成。
 
@@ -8,7 +8,7 @@
 
 “类似量子不可观测”作为产品探索的直觉，工程上拆成访问探测、调试检测、篡改校验与异常响应。它不是物理上的不可观测性，也不能先假定普通客户端能获知每一次外部内存读取。
 
-资料支持的结论如下，涉及 kingsSafe 的实现均为工程判断或待验证候选。
+资料支持的结论如下，涉及 kingsHarden 的实现均为工程判断或待验证候选。
 
 | 判断 | 结论 |
 | --- | --- |
@@ -24,7 +24,7 @@
 
 ## 零业务改动是产品约束
 
-接入合格标准是团队只添加 kingsSafe 包，不要求手工修改 C# 调用、字段类型、场景、Prefab、资源目录、加载入口、构建脚本或接入处置回调。自动配置、平台运行组件和中间产物修改由插件承担。
+接入合格标准是团队只添加 kingsHarden 包，不要求手工修改 C# 调用、字段类型、场景、Prefab、资源目录、加载入口、构建脚本或接入处置回调。自动配置、平台运行组件和中间产物修改由插件承担。
 
 引入插件本身产生的包注册与锁文件变化允许存在；项目原始内容和原有配置不应被插件永久改写。变换仅发生在本次构建的工作副本与输出。开发、Profiler 与诊断所需策略由构建类型自动区分，不能迫使团队修改业务代码才能正常调试。
 
@@ -63,7 +63,7 @@ Windows 的 PAGE_GUARD 提供一次性内存页访问告警。首次访问会清
 
 VirtualProtect 以页为粒度。官方提醒不要随意修改普通堆内存块的页权限，因为同一页可能承载多个内存块，堆管理器有自己的读写假设。[Microsoft 页保护约束](https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect)
 
-因此，候选仅作用于 kingsSafe 独立分配和管理的少量内存区域。不能把整个 Unity 堆设为访问即告警，也不能把正常 GC、引擎或第三方插件访问当作窥探。保护打开后的暴露窗口、跨线程访问、异常处理重入和 CPU 开销均需验证。
+因此，候选仅作用于 kingsHarden 独立分配和管理的少量内存区域。不能把整个 Unity 堆设为访问即告警，也不能把正常 GC、引擎或第三方插件访问当作窥探。保护打开后的暴露窗口、跨线程访问、异常处理重入和 CPU 开销均需验证。
 
 ### 诱饵页与扫描探测
 
@@ -91,7 +91,7 @@ ReadProcessMemory 在调用方进程读取目标地址范围，需要相应进�
 
 Windows VBS Enclave 能将应用的敏感部分置于隔离区域，官方说明其可与宿主和系统其他部分隔离。截至本轮核对，要求 Windows 11 Build 26100.2314 或以上、或 Windows Server 2025，以及启用 VBS/HVCI；开发还涉及专用工具链和签名。[VBS Enclave 官方条件](https://learn.microsoft.com/en-us/windows/win32/trusted-execution/vbs-enclaves)
 
-工程判断：kingsSafe 可以研究将少量秘密管理或符合限制的纯计算自动生成到隔离组件中，再由构建产物自动加载。当前没有证据说明可自动搬入任意 Unity 业务或整个游戏进程。官方开发指南要求相应宿主、隔离 DLL 与签名，不能把普通原生 DLL 标为已隔离。[开发与签名指南](https://learn.microsoft.com/en-us/windows/win32/trusted-execution/vbs-enclaves-dev-guide)
+工程判断：kingsHarden 可以研究将少量秘密管理或符合限制的纯计算自动生成到隔离组件中，再由构建产物自动加载。当前没有证据说明可自动搬入任意 Unity 业务或整个游戏进程。官方开发指南要求相应宿主、隔离 DLL 与签名，不能把普通原生 DLL 标为已隔离。[开发与签名指南](https://learn.microsoft.com/en-us/windows/win32/trusted-execution/vbs-enclaves-dev-guide)
 
 关键验收是敏感明文是否返回普通宿主、进入日志或落入输入输出缓冲。若保护后的 getter 仍把原值交给普通业务代码，隔离内部存储不能保证调用方看不到该值。只有不必导出的秘密和可限制输出的计算，才值得进一步验证安全收益；接口调用和边界复制成本单独测量。
 
@@ -110,7 +110,7 @@ Android Keystore 可保护密钥材料并在应用进程外执行相关密码操
 
 Android 应用隔离由系统内核执行，原生代码同样运行在应用沙箱内；原生插件不会因此获得跨进程或内核权限。[Android 沙箱](https://source.android.com/docs/security/app-sandbox)
 
-Android 发布产物应核查 android:debuggable=false，避免把默认系统隔离或关闭调试本身记为 kingsSafe 特有的探测效果。[Android 调试配置](https://developer.android.com/privacy-and-security/risks/android-debuggable)
+Android 发布产物应核查 android:debuggable=false，避免把默认系统隔离或关闭调试本身记为 kingsHarden 特有的探测效果。[Android 调试配置](https://developer.android.com/privacy-and-security/risks/android-debuggable)
 
 iOS 开发与分发签名的调试权限不同。Apple 技术支持说明开发描述文件可允许 get-task-allow，而分发描述文件包括 Ad Hoc 不允许；测试应区分签名方式，不能只看 Debug 或 Release 标签。[Apple 签名与调试权限说明](https://developer.apple.com/forums/thread/823069)
 
@@ -242,10 +242,10 @@ P1 的可控原生程序用于验证操作系统语义，不算 Unity 插件产�
 
 ## 资料使用记录
 
-本报告优先使用 Unity、Microsoft、Google、Apple 官方资料及 OWASP 原始标准。接口文档用于确认公开语义，kingsSafe 的覆盖率、保护效果、误伤与性能必须通过原型取得。
+本报告优先使用 Unity、Microsoft、Google、Apple 官方资料及 OWASP 原始标准。接口文档用于确认公开语义，kingsHarden 的覆盖率、保护效果、误伤与性能必须通过原型取得。
 
 OWASP 当前的反调试测试将静态引用、实际运行与鲁棒性区分；仅找到或调用检测 API 不证明难以绕过。研究使用当前 v2 的 0401 与 0402，旧 0089 已弃用。[当前运行测试](https://mas.owasp.org/MASTG/tests/ios/MASVS-RESILIENCE/MASTG-TEST-0402/)
 
-OWASP 的 RASP 说明支持“随应用监测并响应”这一技术类别，也区分 SDK 与编译期插入，但不能据此认定 kingsSafe 已有可用能力。[RASP 原始说明](https://mas.owasp.org/MASTG/knowledge/android/MASVS-RESILIENCE/MASTG-KNOW-0118/)
+OWASP 的 RASP 说明支持“随应用监测并响应”这一技术类别，也区分 SDK 与编译期插入，但不能据此认定 kingsHarden 已有可用能力。[RASP 原始说明](https://mas.owasp.org/MASTG/knowledge/android/MASVS-RESILIENCE/MASTG-KNOW-0118/)
 
 Apple 运行时安全页面本轮读取受到限流，未据其正文添加新结论；Android 调试页面一度超时，已由 Android 调试配置与 AOSP 沙箱正文补充。Windows Ob 回调与具体读权限的适用性仍为待核实问题，保留不确定性而非自行扩张接口能力。
